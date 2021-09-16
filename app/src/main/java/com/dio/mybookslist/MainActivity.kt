@@ -1,9 +1,12 @@
 package com.dio.mybookslist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +19,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import androidx.appcompat.view.menu.MenuView.ItemView as ItemView
 
 
-    private lateinit var booksAdapter: AdapterListBooks
+private lateinit var booksAdapter: AdapterListBooks
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getApiResponse()
+
+        getBookDetail()
 
         // teste do recycler
 //        val booksLiveData: MutableList<BooksModel> = ArrayList()
@@ -35,6 +41,14 @@ class MainActivity : AppCompatActivity() {
 //
 //            booksLiveData.add(booksTest)
 //        }
+
+    }
+
+    private fun getBookDetail() {
+        val bookItem = findViewById<Button>(R.id.book_item)
+        bookItem.setOnClickListener {
+            var intent: Intent = Intent(this, )
+        }
 
     }
 
