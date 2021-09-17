@@ -4,18 +4,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.R
 import com.dio.mybookslist.data.model.BooksModel
 import com.squareup.picasso.Picasso
 
-class AdapterListBooks(val lista: MutableList<BooksModel>) : RecyclerView.Adapter<BooksHolder>() {
+class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.Adapter<BooksHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksHolder {
         val view = BooksHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.modelbook_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.modelbook_item, parent, false),
+            onItemClickListener
         )
         return view
     }
@@ -31,7 +32,7 @@ class AdapterListBooks(val lista: MutableList<BooksModel>) : RecyclerView.Adapte
     }
 }
 
-class BooksHolder(teste: View) : RecyclerView.ViewHolder(teste) {
+class BooksHolder(itemVIew: View , var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.ViewHolder(itemVIew) {
     fun bindView(book: BooksModel) {
         val setTitulo = itemView.findViewById<TextView>(R.id.tv_titulo)
         val setAutor = itemView.findViewById<TextView>(R.id.tv_autor)
@@ -40,5 +41,9 @@ class BooksHolder(teste: View) : RecyclerView.ViewHolder(teste) {
         setTitulo.text = book.titulo
         setAutor.text = book.autor
         Picasso.get().load(book.imagem).fit().into(setImage)
+
+        itemView.setOnClickListener {
+            onItemClickListener.invoke(book)
+        }
     }
 }

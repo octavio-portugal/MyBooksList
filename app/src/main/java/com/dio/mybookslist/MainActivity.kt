@@ -4,9 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +19,7 @@ import com.dio.mybookslist.data.BaseAPi
 import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.data.model.ResponseModel
 import com.dio.mybookslist.presenter.AdapterListBooks
+import com.dio.mybookslist.presenter.BookDetailsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         getApiResponse()
 
-        getBookDetail()
 
         // teste do recycler
 //        val booksLiveData: MutableList<BooksModel> = ArrayList()
@@ -44,16 +49,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun getBookDetail() {
-        val bookItem = findViewById<Button>(R.id.book_item)
-        bookItem.setOnClickListener {
-            var intent: Intent = Intent(this, )
-        }
 
+    private fun openDetailsBook() {
+        var intent = Intent(this, BookDetailsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun getApiResponse() {
-        val booksListRecyclerView = findViewById<RecyclerView>(R.id.rv_books_list)
+        val booksListRecyclerView: RecyclerView = findViewById(R.id.rv_books_list)
         val booksArray = arrayListOf<BooksModel>()
 
         // vinculando o adapter
@@ -113,7 +116,9 @@ class MainActivity : AppCompatActivity() {
         booksArray: ArrayList<BooksModel>,
         booksListRecyclerView: RecyclerView
     ) {
-        booksAdapter = AdapterListBooks(booksArray)
+        booksAdapter = AdapterListBooks(booksArray,{book ->
+            val intent: Intent = BookDetailsActivity.getStartIntent()
+        })
         booksListRecyclerView.adapter = booksAdapter
         booksListRecyclerView.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
