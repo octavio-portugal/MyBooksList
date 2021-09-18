@@ -4,5 +4,7 @@ data class BooksModel(
     var titulo: String,
     var autor: String,
     var descricao: String,
-    var imagem: String
+    var imagem: String,
+    var editora: String,
+    var rank: Int
 )

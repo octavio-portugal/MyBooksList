@@ -55,6 +55,19 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun getAdapter(
+        booksArray: ArrayList<BooksModel>,
+        booksListRecyclerView: RecyclerView
+    ) {
+        booksAdapter = AdapterListBooks(booksArray,{book ->
+            val intent: Intent = BookDetailsActivity.getStartIntent(this, book.titulo, book.autor, book.descricao, book.editora, book.imagem, book.rank)
+            startActivity(intent)
+        })
+        booksListRecyclerView.adapter = booksAdapter
+        booksListRecyclerView.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+    }
+
     private fun getApiResponse() {
         val booksListRecyclerView: RecyclerView = findViewById(R.id.rv_books_list)
         val booksArray = arrayListOf<BooksModel>()
@@ -82,7 +95,9 @@ class MainActivity : AppCompatActivity() {
                                     titulo = i.title,
                                     autor= i.author,
                                     descricao = i.description,
-                                    imagem = i.book_image
+                                    imagem = i.book_image,
+                                    editora = i.publisher,
+                                    rank = i.rank
                                 )
                                 //configurando resposta na lista mutavel
                                 booksArray.clear()
@@ -112,26 +127,16 @@ class MainActivity : AppCompatActivity() {
         return callback
     }
 
-    private fun getAdapter(
-        booksArray: ArrayList<BooksModel>,
-        booksListRecyclerView: RecyclerView
-    ) {
-        booksAdapter = AdapterListBooks(booksArray,{book ->
-            val intent: Intent = BookDetailsActivity.getStartIntent()
-        })
-        booksListRecyclerView.adapter = booksAdapter
-        booksListRecyclerView.layoutManager =
-            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-    }
+
 
     // Funcao de teste do recycler
-    private fun testFakeBooks(): List<BooksModel> {
-        return listOf(
-            BooksModel("Duna", "autor 1", "", ""),
-            BooksModel("Duna", "autor 1", "",""),
-            BooksModel("Duna", "autor 1", "",""),
-            BooksModel("Duna", "autor 1", "","")
-        )
-
-    }
+//    private fun testFakeBooks(): List<BooksModel> {
+//        return listOf(
+//            BooksModel("Duna", "autor 1", "", "",""),
+//            BooksModel("Duna", "autor 1", "","",""),
+//            BooksModel("Duna", "autor 1", "","",""),
+//            BooksModel("Duna", "autor 1", "","","")
+//        )
+//
+//    }
 }
