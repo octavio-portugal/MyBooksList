@@ -20,6 +20,10 @@ import retrofit2.Response
 private lateinit var booksAdapter: AdapterListBooks
 
 class MainActivity : AppCompatActivity() {
+
+    private val apiKey: String
+        get() = BuildConfig.API_KEY
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -113,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         val retorfitClient = BaseAPi
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/current/")
         val endPoint = retorfitClient.create(ApiService::class.java)
-        val callback = endPoint.getResponse()
+        val callback = endPoint.getResponse(apiKey)
         return callback
     }
 
