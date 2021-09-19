@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "227167741675",
+    "project_id": "mybookslist-48958",
+    "storage_bucket": "mybookslist-48958.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227167741675:android:f4cbfc3312ed27d9cc40ae",
+        "android_client_info": {
+          "package_name": "com.dio.mybookslist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227167741675-fkbt3n0ma6coo2gon4bk1mh4rniu4916.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZYk39DMPJDbsYHhEP0Xu6B33mg3rF-PI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227167741675-fkbt3n0ma6coo2gon4bk1mh4rniu4916.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

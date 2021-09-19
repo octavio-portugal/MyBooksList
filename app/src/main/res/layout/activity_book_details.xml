@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorPrimary"
     tools:context=".ui.BookDetailsActivity">
 
     <ImageView
@@ -44,9 +44,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/black"
+        android:backgroundTint="@color/blacktransparent"
         android:orientation="vertical"
-        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_book_cover">
 
@@ -58,7 +57,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-black"
             android:hint="Titulo"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +73,7 @@
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif"
             android:text="Autor:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +88,7 @@
             android:layout_marginEnd="30dp"
             android:fontFamily="sans-serif"
             android:hint="Autor"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detalhe_autor" />
@@ -105,12 +104,11 @@
             android:layout_marginTop="70dp"
             android:fontFamily="sans-serif"
             android:text="Editora:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detalhe_autor_texto" />
-
 
         <TextView
             android:id="@+id/tv_detalhe_editora_texto"
@@ -121,7 +119,7 @@
             android:layout_marginEnd="50dp"
             android:fontFamily="sans-serif"
             android:hint="Editora"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@id/tv_detalhe_editora"
             app:layout_constraintTop_toBottomOf="@id/tv_detalhe_autor_texto" />
 
@@ -134,7 +132,7 @@
             android:layout_marginEnd="30dp"
             android:fontFamily="sans-serif"
             android:text="Descrição:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,12 +150,11 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif"
             android:hint="Descricao"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detalhe_descricao" />
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
