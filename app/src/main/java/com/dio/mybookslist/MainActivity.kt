@@ -3,28 +3,18 @@ package com.dio.mybookslist
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.view.menu.MenuView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.data.ApiService
 import com.dio.mybookslist.data.BaseAPi
 import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.data.model.ResponseModel
-import com.dio.mybookslist.presenter.AdapterListBooks
-import com.dio.mybookslist.presenter.BookDetailsActivity
+import com.dio.mybookslist.ui.AdapterListBooks
+import com.dio.mybookslist.ui.BookDetailsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
-import androidx.appcompat.view.menu.MenuView.ItemView as ItemView
 
 
 private lateinit var booksAdapter: AdapterListBooks

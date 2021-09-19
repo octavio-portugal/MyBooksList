@@ -1,4 +1,4 @@
-package com.dio.mybookslist.presenter
+package com.dio.mybookslist.ui
 
 import android.content.Context
 import android.content.Intent
