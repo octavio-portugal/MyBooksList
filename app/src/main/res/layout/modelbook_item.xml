@@ -10,17 +10,6 @@
     android:background="?android:attr/colorPrimary"
     android:padding="10dp">
 
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_bookInfo"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintBaseline_toBottomOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <TextView
         android:id="@+id/tv_titulo"
         android:layout_width="200dp"
@@ -58,6 +47,7 @@
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="10dp"
         app:elevation="15dp"
+        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

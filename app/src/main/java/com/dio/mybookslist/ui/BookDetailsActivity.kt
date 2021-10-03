@@ -15,13 +15,12 @@ class BookDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
+        //
         val detalheTitulo = intent.getStringExtra(EXTRA_TITULO)
         val detalheAutor = intent.getStringExtra(EXTRA_AUTOR)
         val detalheDescricao = intent.getStringExtra(EXTRA_DESCRICAO)
         val detalheImagem = intent.getStringExtra(EXTRA_IMAGEM)
         val detalheEditora = intent.getStringExtra(EXTRA_EDITORA)
-        val detalheRank = intent.getIntExtra(EXTRA_RANK,0)
-
 
         val detalheTituloView = findViewById<TextView>(R.id.tv_detalhe_titulo)
         val detalheAutorView = findViewById<TextView>(R.id.tv_detalhe_autor_texto)
@@ -29,14 +28,11 @@ class BookDetailsActivity : AppCompatActivity() {
         val detalherEditoraView = findViewById<TextView>(R.id.tv_detalhe_editora_texto)
         val detalheImagemView = findViewById<ImageView>(R.id.imv_deatlhe_bookImage)
         val detalheFundo = findViewById<ImageView>(R.id.imv_background_detalhes)
-//        val detalheRankView = findViewById<TextView>(R.id.tv_detalhe_nota_valor)
-
 
         detalheTituloView.text = detalheTitulo
         detalheAutorView.text = detalheAutor
         detalheDescricaoView.text = detalheDescricao
         detalherEditoraView.text = detalheEditora
-//        detalheRankView.text = detalheRank.toString()
         Picasso.get().load(detalheImagem).fit().into(detalheImagemView)
         Picasso.get().load(detalheImagem).transform(BlurTransformation(this, 25,1)).fit().into(detalheFundo)
     }
@@ -57,10 +53,7 @@ class BookDetailsActivity : AppCompatActivity() {
                 putExtra(EXTRA_IMAGEM, imagem)
                 putExtra(EXTRA_EDITORA, editora)
                 putExtra(EXTRA_RANK,rank)
-
             }
-
-
         }
     }
 }

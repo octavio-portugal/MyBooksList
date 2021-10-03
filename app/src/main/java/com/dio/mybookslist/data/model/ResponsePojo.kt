@@ -10,10 +10,6 @@ data class ResponseModel(
     @SerializedName("results")
     var results: ResultsRespnse
 )
-data class BooksDetailsList(
-    var listbooksdetaisl: ArrayList<ResultsRespnse>,
-
-    )
 
 data class ResultsRespnse(
     var list_name: String,
@@ -27,15 +23,7 @@ data class ResultsRespnse(
     var amazon_product_url: String,
     var isbns: List<IsbnsResponse>,
     var books :List<DetailsResponse>,
-//    @SerializedName("book_details")
-//    var book_details: DetailsResponse,
     var reviews: List<ResviewsResponse>
-// variaveis de teste
-//    var userId: Int,
-//    var id: Int,
-//    var title: String,
-//    var body: String
-
 )
 
 data class DetailsResponse(
@@ -53,7 +41,6 @@ data class DetailsResponse(
     @SerializedName("author")
     var author: String,
     var book_image:String
-
     )
 
 data class ResviewsResponse(
@@ -61,7 +48,6 @@ data class ResviewsResponse(
     var first_chapter_link: String,
     var sunday_review_link: String,
     var article_chapter_link: String
-
 )
 
 
