@@ -1,9 +1,10 @@
-package com.dio.mybookslist.ui
+package com.dio.mybookslist.ui.fragment
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
@@ -12,6 +13,8 @@ import com.dio.mybookslist.data.ApiService
 import com.dio.mybookslist.data.BaseAPi
 import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.data.model.ResponseModel
+import com.dio.mybookslist.ui.AdapterListBooks
+import com.dio.mybookslist.ui.BookDetailsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +22,7 @@ import retrofit2.Response
 
 private lateinit var booksAdapter: AdapterListBooks
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : Fragment() {
 
     private val apiKey: String
         get() = BuildConfig.API_KEY
@@ -41,12 +44,6 @@ class ListActivity : AppCompatActivity() {
 //            booksLiveData.add(booksTest)
 //        }
 
-    }
-
-
-    private fun openDetailsBook() {
-        var intent = Intent(this, BookDetailsActivity::class.java)
-        startActivity(intent)
     }
 
     private fun getAdapter(
