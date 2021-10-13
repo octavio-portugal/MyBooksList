@@ -1,14 +1,20 @@
 package com.dio.mybookslist.ui.fragment
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.convertTo
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
 import com.dio.mybookslist.R
+import com.dio.mybookslist.R.id.*
 import com.dio.mybookslist.data.ApiService
 import com.dio.mybookslist.data.BaseAPi
 import com.dio.mybookslist.data.model.BooksModel
@@ -27,13 +33,26 @@ class ListActivity : Fragment() {
     private val apiKey: String
         get() = BuildConfig.API_KEY
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    companion object {
+        fun newInstance(): ListActivity {
+            val fragmentHome = ListActivity()
+            val arguments = Bundle()
+            fragmentHome.arguments = arguments
+            return fragmentHome
+        }
+    }
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getApiResponse()
-
 
         // teste do recycler
 //        val booksLiveData: MutableList<BooksModel> = ArrayList()
@@ -44,7 +63,7 @@ class ListActivity : Fragment() {
 //            booksLiveData.add(booksTest)
 //        }
 
-    }
+        }
 
     private fun getAdapter(
         booksArray: ArrayList<BooksModel>,
@@ -56,11 +75,11 @@ class ListActivity : Fragment() {
         })
         booksListRecyclerView.adapter = booksAdapter
         booksListRecyclerView.layoutManager =
-            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }
 
     private fun getApiResponse() {
-        val booksListRecyclerView: RecyclerView = findViewById(R.id.rv_books_list)
+        var booksListRecyclerView: RecyclerView = requireView().findViewById(rv_books_list)
         val booksArray = arrayListOf<BooksModel>()
 
         // vinculando o adapter
@@ -104,7 +123,7 @@ class ListActivity : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-                Toast.makeText(this@ListActivity, t.message, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@ListActivity, t.message, Toast.LENGTH_SHORT).show()
 //                Log.d("ERROR", t.message.toString())
             }
         })

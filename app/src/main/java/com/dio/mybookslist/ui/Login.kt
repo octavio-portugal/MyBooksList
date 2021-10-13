@@ -67,7 +67,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun AbrirTelaPrincipal() {
-        var intent = Intent(this, com.dio.mybookslist.ui.ListActivity::class.java)
+        var intent = Intent(this, FragmentActivity::class.java)
         startActivity(intent)
         finish()
     }

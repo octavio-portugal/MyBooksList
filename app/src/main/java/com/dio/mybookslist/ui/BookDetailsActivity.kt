@@ -1,12 +1,12 @@
 package com.dio.mybookslist.ui
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.dio.mybookslist.R
+import com.dio.mybookslist.ui.fragment.ListActivity
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 
@@ -45,8 +45,8 @@ class BookDetailsActivity : AppCompatActivity() {
         private const val EXTRA_EDITORA = "EXTRA_EDITORA"
         private const val EXTRA_RANK = "EXTRA_RANK"
 
-        fun getStartIntent(context: Context, titulo: String, autor: String, descricao: String, editora: String, imagem: String, rank: Int): Intent {
-            return Intent(context, BookDetailsActivity::class.java).apply {
+        fun getStartIntent( context: ListActivity,titulo: String, autor: String, descricao: String, editora: String, imagem: String, rank: Int): Intent {
+            return Intent( context.context, BookDetailsActivity::class.java).apply{
                 putExtra(EXTRA_TITULO, titulo)
                 putExtra(EXTRA_AUTOR, autor)
                 putExtra(EXTRA_DESCRICAO, descricao)

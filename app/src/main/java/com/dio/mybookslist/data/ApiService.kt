@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("hardcover-fiction.json?api-key=FVWR9iNfBhiZIgnvCOa4dLjX6ucfK9Wb")
+    @GET("hardcover-fiction.json?")
     fun getResponse(
         @Query("api-key") apikey: String,
     ): Call<ResponseModel>
