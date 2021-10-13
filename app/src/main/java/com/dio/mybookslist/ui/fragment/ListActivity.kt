@@ -133,7 +133,7 @@ class ListActivity : Fragment() {
         val retorfitClient = BaseAPi
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/current/")
         val endPoint = retorfitClient.create(ApiService::class.java)
-        val callback = endPoint.getResponse(apiKey)
+        val callback = endPoint.getResponse("hardcover-fiction", apiKey)
         return callback
     }
 
