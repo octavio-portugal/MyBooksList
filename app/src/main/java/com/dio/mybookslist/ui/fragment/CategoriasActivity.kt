@@ -1,6 +1,5 @@
 package com.dio.mybookslist.ui.fragment
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,7 @@ class CategoriasActivity : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            return inflater.inflate(R.layout.activity_categorias2, container, false)
+            return inflater.inflate(R.layout.activity_categorias, container, false)
         }
 
         fun onViewCreated(view: View, savedInstanceState: Bundle?) {
