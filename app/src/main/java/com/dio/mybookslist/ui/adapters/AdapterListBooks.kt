@@ -22,7 +22,7 @@ class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListen
 
     override fun onBindViewHolder(holder: BooksHolder, position: Int) {
         val listaPosition = lista[position]
-        holder.bindView(lista[position])
+        holder.bindView(listaPosition)
     }
 
     override fun getItemCount(): Int {

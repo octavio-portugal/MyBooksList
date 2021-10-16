@@ -8,6 +8,7 @@
     tools:context=".ui.fragment.CategoriasActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_categorias_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"

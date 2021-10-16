@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.convertTo
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
 import com.dio.mybookslist.R
-import com.dio.mybookslist.R.id.*
-import com.dio.mybookslist.data.ApiService
+import com.dio.mybookslist.R.id.rv_books_list
+import com.dio.mybookslist.data.ApiServiceBooksList
 import com.dio.mybookslist.data.BaseAPi
 import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.data.model.ResponseModel
@@ -131,9 +127,9 @@ class ListActivity : Fragment() {
 
     private fun setApiCall(): Call<ResponseModel> {
         val retorfitClient = BaseAPi
-            .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/current/")
-        val endPoint = retorfitClient.create(ApiService::class.java)
-        val callback = endPoint.getResponse("hardcover-fiction", apiKey)
+            .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/")
+        val endPoint = retorfitClient.create(ApiServiceBooksList::class.java)
+        val callback = endPoint.getResponseBooksList("hardcover-fiction", apiKey)
         return callback
     }
 
