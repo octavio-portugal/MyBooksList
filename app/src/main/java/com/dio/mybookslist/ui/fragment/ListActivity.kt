@@ -2,6 +2,7 @@ package com.dio.mybookslist.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,11 +24,16 @@ import retrofit2.Response
 
 
 private lateinit var booksAdapter: AdapterListBooks
+private var intentResponse: String = "hardcover-fiction"
+
+
 
 class ListActivity : Fragment() {
 
     private val apiKey: String
         get() = BuildConfig.API_KEY
+
+//    private val intent: Intent? = Intent.getIntentOld()
 
     companion object {
         fun newInstance(): ListActivity {
@@ -37,7 +43,6 @@ class ListActivity : Fragment() {
             return fragmentHome
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,16 +55,23 @@ class ListActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getApiResponse()
 
-        // teste do recycler
-//        val booksLiveData: MutableList<BooksModel> = ArrayList()
-//        for( c in 0..4){
-//            val booksTest = BooksModel("", "", "")
-//            booksTest.titulo = "Titulo $c"
-//
-//            booksLiveData.add(booksTest)
-//        }
+
+
+         recebeIntent()
+
+//        Log.d("INTENT", url.toString())
+//        Log.d("INTENT", url.toString())
+//        Log.d("INTENT", url.toString())
 
         }
+
+    private fun recebeIntent(): Intent {
+        return Intent(this, ListActivity::class.java)
+    }
+
+    private fun Intent(listActivity: ListActivity, java: Class<ListActivity>): Intent {
+            return Intent()
+    }
 
     private fun getAdapter(
         booksArray: ArrayList<BooksModel>,
@@ -68,6 +80,7 @@ class ListActivity : Fragment() {
         booksAdapter = AdapterListBooks(booksArray,{book ->
             val intent: Intent = BookDetailsActivity.getStartIntent(this, book.titulo, book.autor, book.descricao, book.editora, book.imagem, book.rank)
             startActivity(intent)
+
         })
         booksListRecyclerView.adapter = booksAdapter
         booksListRecyclerView.layoutManager =
@@ -130,6 +143,7 @@ class ListActivity : Fragment() {
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/")
         val endPoint = retorfitClient.create(ApiServiceBooksList::class.java)
         val callback = endPoint.getResponseBooksList("hardcover-fiction", apiKey)
+
         return callback
     }
 

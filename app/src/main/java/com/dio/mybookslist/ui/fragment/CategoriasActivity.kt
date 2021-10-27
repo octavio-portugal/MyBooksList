@@ -1,5 +1,6 @@
 package com.dio.mybookslist.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -62,14 +63,32 @@ class CategoriasActivity : Fragment() {
 
         callback.enqueue(object: Callback<CategoriasResponse>{
             override fun onResponse(
-                call: Call<CategoriasResponse>,
-                response: Response<CategoriasResponse>
+                call: Call<CategoriasResponse>, response: Response<CategoriasResponse>
             ) {
-                TODO("Not yet implemented")
+                if (response.isSuccessful && response != null){
+
+                    val categoriasColetion : MutableList<CategoriasModel> = mutableListOf()
+
+                    response.body()?.let { response ->
+                        try {
+                            for (i in response.results){
+                                val categoria: CategoriasModel = CategoriasModel(
+                                    lista_nome = i.list_name,
+                                    list_nome_url = i.list_name_encoded
+                                )
+
+                                categoriasArray.clear()
+                                categoriasColetion.add(categoria)
+                                categoriasArray.addAll(categoriasColetion)
+                                categoriasAdapter.notifyDataSetChanged()
+                            }
+                        }finally {}
+                    }
+                }
             }
 
             override fun onFailure(call: Call<CategoriasResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -80,7 +99,7 @@ class CategoriasActivity : Fragment() {
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/")
         val endPoints = retrofitClient.create(ApiServiceCategoriasList::class.java)
         val callback = endPoints.getResponseCategoriasList(apiKey)
-
+        return callback
     }
 
     private fun getAdapter(
@@ -88,10 +107,24 @@ class CategoriasActivity : Fragment() {
         categoriasRecyclerView: RecyclerView
     ) {
         categoriasAdapter = AdapterCategorias(categoriasArray, { categoria ->
-            var getCateriaUrl: String = (categoria.list_nome_url)
+//            val intent = Intent(this, ListActivity::class.java)
+            val params = Bundle()
+            val url = categoria.list_nome_url.toString()
+            val navListActivity = ListActivity()
+            navListActivity.arguments
+            params.putString("urlCategories", url)
+            fragmentManager?.beginTransaction()?.replace(categoria.list_nome_url.toInt(), navListActivity)?.commit()
+//            intent?.putExtras(params)
+//            startActivity(intent)
         })
         categoriasRecyclerView.adapter = categoriasAdapter
         categoriasRecyclerView.layoutManager =
             GridLayoutManager(context, 2)
     }
+
+    private fun Intent(categoriasActivity: CategoriasActivity, java: Class<ListActivity>): Intent? {
+        return Intent()
+    }
+
+
 }

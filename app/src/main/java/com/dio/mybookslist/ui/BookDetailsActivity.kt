@@ -15,6 +15,7 @@ class BookDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
+
         //
         val detalheTitulo = intent.getStringExtra(EXTRA_TITULO)
         val detalheAutor = intent.getStringExtra(EXTRA_AUTOR)
