@@ -40,7 +40,6 @@ class CategoriasActivity : Fragment() {
 
     override fun onCreateView(
 
-
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -90,7 +89,6 @@ class CategoriasActivity : Fragment() {
             override fun onFailure(call: Call<CategoriasResponse>, t: Throwable) {
 
             }
-
         })
     }
 

@@ -1,6 +1,5 @@
 package com.dio.mybookslist.data
 
-import com.dio.mybookslist.data.model.CategoriasModel
 import com.dio.mybookslist.data.model.CategoriasResponse
 import com.dio.mybookslist.data.model.ResponseModel
 import retrofit2.Call

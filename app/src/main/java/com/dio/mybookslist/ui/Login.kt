@@ -1,6 +1,5 @@
 package com.dio.mybookslist.ui
 
-import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button

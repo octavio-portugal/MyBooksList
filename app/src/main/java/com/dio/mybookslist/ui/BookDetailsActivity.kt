@@ -1,10 +1,10 @@
 package com.dio.mybookslist.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.dio.mybookslist.R
 import com.dio.mybookslist.ui.fragment.ListActivity
 import com.squareup.picasso.Picasso
@@ -15,8 +15,8 @@ class BookDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
+        //configura o recebimento dos dados do fragment, e ajusta as View corretas
 
-        //
         val detalheTitulo = intent.getStringExtra(EXTRA_TITULO)
         val detalheAutor = intent.getStringExtra(EXTRA_AUTOR)
         val detalheDescricao = intent.getStringExtra(EXTRA_DESCRICAO)

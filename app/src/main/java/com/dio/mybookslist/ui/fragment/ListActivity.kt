@@ -2,7 +2,6 @@ package com.dio.mybookslist.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,16 +23,13 @@ import retrofit2.Response
 
 
 private lateinit var booksAdapter: AdapterListBooks
-private var intentResponse: String = "hardcover-fiction"
-
-
 
 class ListActivity : Fragment() {
 
     private val apiKey: String
         get() = BuildConfig.API_KEY
 
-//    private val intent: Intent? = Intent.getIntentOld()
+    private var url_categories = "hardcover-fiction"
 
     companion object {
         fun newInstance(): ListActivity {
@@ -55,13 +51,7 @@ class ListActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getApiResponse()
 
-
-
          recebeIntent()
-
-//        Log.d("INTENT", url.toString())
-//        Log.d("INTENT", url.toString())
-//        Log.d("INTENT", url.toString())
 
         }
 
@@ -73,6 +63,7 @@ class ListActivity : Fragment() {
             return Intent()
     }
 
+    //configura adapter e ajusta envio de dados para outra activity
     private fun getAdapter(
         booksArray: ArrayList<BooksModel>,
         booksListRecyclerView: RecyclerView
@@ -123,7 +114,6 @@ class ListActivity : Fragment() {
                                 booksColetion.add(book)
                                 booksArray.addAll(booksColetion)
                                 booksAdapter.notifyDataSetChanged()
-//                                Log.d("Teste 2 ", book.toString())
                             }
 
                         }finally { }
@@ -132,8 +122,6 @@ class ListActivity : Fragment() {
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
-//                Toast.makeText(this@ListActivity, t.message, Toast.LENGTH_SHORT).show()
-//                Log.d("ERROR", t.message.toString())
             }
         })
     }
@@ -142,12 +130,10 @@ class ListActivity : Fragment() {
         val retorfitClient = BaseAPi
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/")
         val endPoint = retorfitClient.create(ApiServiceBooksList::class.java)
-        val callback = endPoint.getResponseBooksList("hardcover-fiction", apiKey)
+        val callback = endPoint.getResponseBooksList(url_categories, apiKey)
 
         return callback
     }
-
-
 
     // Funcao de teste do recycler
 //    private fun testFakeBooks(): List<BooksModel> {
