@@ -1,4 +1,4 @@
-package com.dio.mybookslist.ui
+package com.dio.mybookslist.presentation
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.R
-import com.dio.mybookslist.data.model.BooksModel
+import com.dio.mybookslist.Model.data.model.BooksModel
 import com.squareup.picasso.Picasso
 
 class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.Adapter<BooksHolder>() {

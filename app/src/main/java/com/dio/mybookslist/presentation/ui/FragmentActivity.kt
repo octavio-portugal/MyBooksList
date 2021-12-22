@@ -1,4 +1,4 @@
-package com.dio.mybookslist.ui
+package com.dio.mybookslist.presentation.ui
 
 import android.os.Bundle
 import android.view.*
@@ -6,8 +6,10 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dio.mybookslist.R
-import com.dio.mybookslist.ui.fragment.CategoriasActivity
-import com.dio.mybookslist.ui.fragment.ListActivity
+import com.dio.mybookslist.presentation.ui.fragment.BooksFragment
+import com.dio.mybookslist.presentation.ui.fragment.CategoriasActivity
+import com.dio.mybookslist.presentation.ui.fragment.ListActivity
+import com.dio.mybookslist.presentation.ui.viewmodel.BooksViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @Suppress("DEPRECATION")
@@ -19,7 +21,7 @@ class FragmentActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.nav_library -> {
-                    val fragment = ListActivity.newInstance()
+                    val fragment = BooksFragment.newInstance()
                     addFragment(fragment)
                     return@OnNavigationItemSelectedListener true
                 }

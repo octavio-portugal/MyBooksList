@@ -1,4 +1,4 @@
-package com.dio.mybookslist.ui
+package com.dio.mybookslist.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.dio.mybookslist.R
-import com.dio.mybookslist.ui.fragment.ListActivity
+import com.dio.mybookslist.presentation.ui.fragment.ListActivity
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 

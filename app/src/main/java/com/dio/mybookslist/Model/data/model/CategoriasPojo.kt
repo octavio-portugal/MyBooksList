@@ -1,4 +1,4 @@
-package com.dio.mybookslist.data.model
+package com.dio.mybookslist.Model.data.model
 
 data class CategoriasResponse (
     var status : String,

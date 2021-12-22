@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyBooksList">
-        <activity android:name=".ui.BookDetailsActivity"/>
-        <activity android:name=".ui.FragmentActivity"/>
-        <activity android:name=".ui.Login">
+        <activity android:name=".presentation.ui.BookDetailsActivity"/>
+        <activity android:name=".presentation.ui.FragmentActivity"/>
+        <activity android:name=".presentation.ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

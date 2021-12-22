@@ -1,4 +1,4 @@
-package com.dio.mybookslist.ui
+package com.dio.mybookslist.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 @Suppress("DEPRECATION")
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form_login)
@@ -25,6 +25,8 @@ class Login : AppCompatActivity() {
         btn_entrar.setOnClickListener {
 
             LoginUsuario()
+
+//            val viewModel = ViewModelProvider.of(this).get(BooksViewModel::class.java)
         }
     }
 

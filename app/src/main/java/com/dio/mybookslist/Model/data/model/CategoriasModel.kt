@@ -1,4 +1,4 @@
-package com.dio.mybookslist.data.model
+package com.dio.mybookslist.Model.data.model
 
 class CategoriasModel (
     var lista_nome: String,

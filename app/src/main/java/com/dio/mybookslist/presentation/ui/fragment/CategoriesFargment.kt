@@ -1,4 +1,4 @@
-package com.dio.mybookslist.ui.fragment
+package com.dio.mybookslist.presentation.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,15 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
 import com.dio.mybookslist.R
 import com.dio.mybookslist.R.id.rv_categorias_list
-import com.dio.mybookslist.data.ApiServiceCategoriasList
-import com.dio.mybookslist.data.BaseAPi
-import com.dio.mybookslist.data.model.CategoriasModel
-import com.dio.mybookslist.data.model.CategoriasResponse
-import com.dio.mybookslist.ui.adapters.AdapterCategorias
+import com.dio.mybookslist.Model.data.service.ApiServiceCategoriasList
+import com.dio.mybookslist.Model.data.service.BaseAPi
+import com.dio.mybookslist.Model.data.model.CategoriasModel
+import com.dio.mybookslist.Model.data.model.CategoriasResponse
+import com.dio.mybookslist.presentation.adapters.AdapterCategorias
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 
 private lateinit var categoriasAdapter: AdapterCategorias
