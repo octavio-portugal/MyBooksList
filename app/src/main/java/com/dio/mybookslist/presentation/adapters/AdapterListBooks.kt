@@ -9,15 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.R
 import com.dio.mybookslist.Model.data.model.BooksModel
+import com.dio.mybookslist.databinding.ModelbookItemBinding
 import com.squareup.picasso.Picasso
 
 class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.Adapter<BooksHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksHolder {
-        val view = BooksHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.modelbook_item, parent, false),
-            onItemClickListener
-        )
-        return view
+//        val view = BooksHolder(
+//            LayoutInflater.from(parent.context).inflate(R.layout.modelbook_item, parent, false),
+//            onItemClickListener
+//        )
+
+        val binding = ModelbookItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+        return BooksHolder(binding, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: BooksHolder, position: Int) {
@@ -31,11 +34,12 @@ class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListen
     }
 }
 
-class BooksHolder(itemVIew: View , var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.ViewHolder(itemVIew) {
+class BooksHolder(private val binding: ModelbookItemBinding , var onItemClickListener : ((book: BooksModel)-> Unit)) :
+    RecyclerView.ViewHolder(binding.root) {
     fun bindView(book: BooksModel) {
-        val setTitulo = itemView.findViewById<TextView>(R.id.tv_titulo)
-        val setAutor = itemView.findViewById<TextView>(R.id.tv_autor)
-        val setImage = itemView.findViewById<ImageView>(R.id.imv_bookImage)
+        val setTitulo = binding.tvTitulo
+        val setAutor = binding.tvAutor
+        val setImage = binding.imvBookImage
 
         setTitulo.text = book.titulo
         setAutor.text = book.autor

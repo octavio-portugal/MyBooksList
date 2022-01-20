@@ -2,18 +2,21 @@ package com.dio.mybookslist.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import com.dio.mybookslist.R
-import com.dio.mybookslist.presentation.ui.fragment.ListActivity
+import com.dio.mybookslist.databinding.ActivityBookDetailsBinding
+import com.dio.mybookslist.presentation.ui.fragment.BooksFragment
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
 
 class BookDetailsActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_book_details)
+
+        val binding = ActivityBookDetailsBinding.inflate(LayoutInflater.from(parent))
+        setContentView(binding.root)
 
         //configura o recebimento dos dados do fragment, e ajusta as View corretas
 
@@ -23,12 +26,12 @@ class BookDetailsActivity : AppCompatActivity() {
         val detalheImagem = intent.getStringExtra(EXTRA_IMAGEM)
         val detalheEditora = intent.getStringExtra(EXTRA_EDITORA)
 
-        val detalheTituloView = findViewById<TextView>(R.id.tv_detalhe_titulo)
-        val detalheAutorView = findViewById<TextView>(R.id.tv_detalhe_autor_texto)
-        val detalheDescricaoView = findViewById<TextView>(R.id.tv_detalhe_descricao_texto)
-        val detalherEditoraView = findViewById<TextView>(R.id.tv_detalhe_editora_texto)
-        val detalheImagemView = findViewById<ImageView>(R.id.imv_deatlhe_bookImage)
-        val detalheFundo = findViewById<ImageView>(R.id.imv_background_detalhes)
+        val detalheTituloView = binding.tvDetalheTitulo
+        val detalheAutorView = binding.tvDetalheAutorTexto
+        val detalheDescricaoView = binding.tvDetalheDescricaoTexto
+        val detalherEditoraView = binding.tvDetalheEditoraTexto
+        val detalheImagemView = binding.imvDeatlheBookImage
+        val detalheFundo = binding.imvBackgroundDetalhes
 
         detalheTituloView.text = detalheTitulo
         detalheAutorView.text = detalheAutor
@@ -46,7 +49,7 @@ class BookDetailsActivity : AppCompatActivity() {
         private const val EXTRA_EDITORA = "EXTRA_EDITORA"
         private const val EXTRA_RANK = "EXTRA_RANK"
 
-        fun getStartIntent( context: ListActivity,titulo: String, autor: String, descricao: String, editora: String, imagem: String, rank: Int): Intent {
+        fun getStartIntent( context: BooksFragment,titulo: String, autor: String, descricao: String, editora: String, imagem: String, rank: Int): Intent {
             return Intent( context.context, BookDetailsActivity::class.java).apply{
                 putExtra(EXTRA_TITULO, titulo)
                 putExtra(EXTRA_AUTOR, autor)

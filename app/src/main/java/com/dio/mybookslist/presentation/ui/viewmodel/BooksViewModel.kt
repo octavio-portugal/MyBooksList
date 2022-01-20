@@ -1,5 +1,6 @@
 package com.dio.mybookslist.presentation.ui.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dio.mybookslist.BuildConfig
@@ -12,7 +13,7 @@ import retrofit2.Response
 
 class BooksViewModel : ViewModel() {
 
-    val booksLiveData: MutableLiveData<List<BooksModel>> = MutableLiveData()
+    private val booksLiveData: MutableLiveData<List<BooksModel>> = MutableLiveData()
 
     private val apiKey: String
         get() = BuildConfig.API_KEY

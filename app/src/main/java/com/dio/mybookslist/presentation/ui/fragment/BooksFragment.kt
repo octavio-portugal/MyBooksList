@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dio.mybookslist.R
+import com.dio.mybookslist.databinding.BooksFragmentBinding
 import com.dio.mybookslist.presentation.AdapterListBooks
 import com.dio.mybookslist.presentation.ui.viewmodel.BooksViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-private lateinit var booksAdapter: AdapterListBooks
+//private lateinit var booksAdapter: AdapterListBooks
 
 class BooksFragment : Fragment() {
 
@@ -19,8 +20,9 @@ class BooksFragment : Fragment() {
      * Usa o Koin para injetar a dependência do ViewModel
      */
     private val viewModel: BooksViewModel by viewModel()
-    private val binding: HomeFragmentBinding by lazy {
-        HomeFragmentBinding.inflate(layoutInflater)
+    private val binding: BooksFragmentBinding
+    by lazy {
+        BooksFragmentBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -36,11 +38,9 @@ class BooksFragment : Fragment() {
     private fun initRecyclerView() {
 
         val adapter = AdapterListBooks()
-        binding.homeRv.adapter = adapter
+        binding.rvBooksList.adapter= adapter
 
-        viewModel.listPost.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
+
 
 
     }
@@ -53,7 +53,7 @@ class BooksFragment : Fragment() {
      * funcionem.
      */
     private fun initBinding() {
-        binding.viewModel = viewModel
+        binding.viewModelBooks = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
@@ -63,7 +63,7 @@ class BooksFragment : Fragment() {
      * não será usado.
      */
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = BooksFragment()
     }
 
 }
