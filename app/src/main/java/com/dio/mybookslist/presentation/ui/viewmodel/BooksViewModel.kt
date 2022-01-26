@@ -4,16 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dio.mybookslist.BuildConfig
-import com.dio.mybookslist.Model.data.service.BaseAPi
-import com.dio.mybookslist.Model.data.model.BooksModel
-import com.dio.mybookslist.Model.data.model.ResponseModel
+import com.dio.mybookslist.data.service.BaseAPi
+import com.dio.mybookslist.data.model.BooksModel
+import com.dio.mybookslist.data.model.ResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class BooksViewModel : ViewModel() {
 
-    private val booksLiveData: MutableLiveData<List<BooksModel>> = MutableLiveData()
+    private val booksLiveData: MutableLiveData<List<BooksModel>>
+        get() = MutableLiveData()
+    val booksList: LiveData<List<BooksModel>>
+        get() = booksLiveData
 
     private val apiKey: String
         get() = BuildConfig.API_KEY

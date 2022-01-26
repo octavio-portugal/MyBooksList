@@ -5,9 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.R
 import com.dio.mybookslist.databinding.BooksFragmentBinding
 import com.dio.mybookslist.presentation.AdapterListBooks
+import com.dio.mybookslist.presentation.ui.BookDetailsActivity
 import com.dio.mybookslist.presentation.ui.viewmodel.BooksViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,6 +24,7 @@ class BooksFragment : Fragment() {
     /**
      * Usa o Koin para injetar a dependência do ViewModel
      */
+//    private lateinit var viewModel: BooksViewModel
     private val viewModel: BooksViewModel by viewModel()
     private val binding: BooksFragmentBinding
     by lazy {
@@ -32,17 +38,24 @@ class BooksFragment : Fragment() {
 
         initBinding()
         initRecyclerView()
+        initViewModel()
         return binding.root
+
+    }
+
+    private fun initViewModel() {
+//         viewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
+
     }
 
     private fun initRecyclerView() {
 
-        val adapter = AdapterListBooks()
+        val adapter = AdapterListBooks(mutableListOf<BooksModel>(), { book ->
+            val intent = BookDetailsActivity.getStartIntent(this, book.titulo, book.autor, book.descricao, book.editora, book.imagem, book.rank)
+            this.startActivity(intent)})
+
         binding.rvBooksList.adapter= adapter
-
-
-
-
+        binding.rvBooksList.layoutManager = LinearLayoutManager(this.context)
     }
 
     /**

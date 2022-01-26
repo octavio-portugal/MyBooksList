@@ -1,4 +1,4 @@
-package com.dio.mybookslist.Model.data.model
+package com.dio.mybookslist.data.model
 
 import com.dio.mybookslist.R
 import com.google.firebase.auth.FirebaseAuth

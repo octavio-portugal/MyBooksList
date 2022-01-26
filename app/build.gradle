@@ -48,7 +48,6 @@ android {
 
 dependencies {
 
-
     def koin_version= "3.0.1"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -86,4 +85,5 @@ dependencies {
     //Koin
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-android-ext:$koin_version"
+
 }

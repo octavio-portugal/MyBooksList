@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.R
-import com.dio.mybookslist.Model.data.model.CategoriasModel
+import com.dio.mybookslist.data.model.CategoriasModel
 
 
 class AdapterCategorias (val lista: MutableList<CategoriasModel>, var onItemClickListener : ((categoria: CategoriasModel)-> Unit)) : RecyclerView.Adapter<CategoriasHolder>(){

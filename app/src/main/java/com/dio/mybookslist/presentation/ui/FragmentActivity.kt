@@ -10,6 +10,8 @@ import com.dio.mybookslist.databinding.FragmentActivityBinding
 import com.dio.mybookslist.presentation.ui.fragment.BooksFragment
 import com.dio.mybookslist.presentation.ui.fragment.CategoriasActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 @Suppress("DEPRECATION")
 class FragmentActivity : AppCompatActivity() {
@@ -40,6 +42,7 @@ class FragmentActivity : AppCompatActivity() {
         binding = FragmentActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
 
         Content = binding.content
 

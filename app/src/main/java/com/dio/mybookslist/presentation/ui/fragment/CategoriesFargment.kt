@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
 import com.dio.mybookslist.R
 import com.dio.mybookslist.R.id.rv_categorias_list
-import com.dio.mybookslist.Model.data.service.ApiServiceCategoriasList
-import com.dio.mybookslist.Model.data.service.BaseAPi
-import com.dio.mybookslist.Model.data.model.CategoriasModel
-import com.dio.mybookslist.Model.data.model.CategoriasResponse
+import com.dio.mybookslist.data.service.ApiServiceCategoriasList
+import com.dio.mybookslist.data.service.BaseAPi
+import com.dio.mybookslist.data.model.CategoriasModel
+import com.dio.mybookslist.data.model.CategoriasResponse
 import com.dio.mybookslist.presentation.adapters.AdapterCategorias
 import retrofit2.Call
 import retrofit2.Callback
@@ -107,7 +107,7 @@ class CategoriasActivity : Fragment() {
 //            val intent = Intent(this, ListActivity::class.java)
             val params = Bundle()
             val url = categoria.list_nome_url.toString()
-            val navListActivity = ListActivity()
+            val navListActivity = BooksFragment()
             navListActivity.arguments
             params.putString("urlCategories", url)
             fragmentManager?.beginTransaction()?.replace(categoria.list_nome_url.toInt(), navListActivity)?.commit()
@@ -119,7 +119,7 @@ class CategoriasActivity : Fragment() {
             GridLayoutManager(context, 2)
     }
 
-    private fun Intent(categoriasActivity: CategoriasActivity, java: Class<ListActivity>): Intent? {
+    private fun Intent(categoriasActivity: CategoriasActivity, java: Class<BooksFragment>): Intent? {
         return Intent()
     }
 

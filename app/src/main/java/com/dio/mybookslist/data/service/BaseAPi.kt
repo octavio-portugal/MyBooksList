@@ -1,4 +1,4 @@
-package com.dio.mybookslist.Model.data.service
+package com.dio.mybookslist.data.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

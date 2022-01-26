@@ -1,7 +1,7 @@
-package com.dio.mybookslist.Model.data.service
+package com.dio.mybookslist.data.service
 
-import com.dio.mybookslist.Model.data.model.CategoriasResponse
-import com.dio.mybookslist.Model.data.model.ResponseModel
+import com.dio.mybookslist.data.model.CategoriasResponse
+import com.dio.mybookslist.data.model.ResponseModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

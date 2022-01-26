@@ -2,17 +2,13 @@ package com.dio.mybookslist.presentation
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dio.mybookslist.R
-import com.dio.mybookslist.Model.data.model.BooksModel
+import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.databinding.ModelbookItemBinding
 import com.squareup.picasso.Picasso
 
-class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.Adapter<BooksHolder>() {
+class AdapterListBooks(internal val list: MutableList<BooksModel>, var onItemClickListener : ((book: BooksModel)-> Unit)) : RecyclerView.Adapter<BooksHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BooksHolder {
 //        val view = BooksHolder(
 //            LayoutInflater.from(parent.context).inflate(R.layout.modelbook_item, parent, false),
@@ -24,13 +20,13 @@ class AdapterListBooks(val lista: MutableList<BooksModel>, var onItemClickListen
     }
 
     override fun onBindViewHolder(holder: BooksHolder, position: Int) {
-        val listaPosition = lista[position]
+        val listaPosition = list[position]
         holder.bindView(listaPosition)
     }
 
     override fun getItemCount(): Int {
-        Log.d("item count", lista.count().toString())
-        return lista.count()
+        Log.d("item count", list.count().toString())
+        return list.count()
     }
 }
 
