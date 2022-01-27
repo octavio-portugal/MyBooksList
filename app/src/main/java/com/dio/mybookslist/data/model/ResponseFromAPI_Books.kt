@@ -8,10 +8,10 @@ data class ResponseModel(
     var num_results: String,
     var last_modified: String,
     @SerializedName("results")
-    var results: ResultsRespnse
+    var results: ResultsResponse
 )
 
-data class ResultsRespnse(
+data class ResultsResponse(
     var list_name: String,
     var display_name: String,
     var bestsellers_date: String,
@@ -55,3 +55,6 @@ data class IsbnsResponse(
     var isbn10: String,
     var isbn13: String
 )
+
+//fun DetailsResponse.toModel() = BooksModel(this.title, this.author, this.description, this.book_image, this.publisher)
+fun ResponseModel.toModel() = BooksModel(this.status)

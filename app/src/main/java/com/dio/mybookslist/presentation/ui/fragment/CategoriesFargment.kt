@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dio.mybookslist.BuildConfig
 import com.dio.mybookslist.R
 import com.dio.mybookslist.R.id.rv_categorias_list
-import com.dio.mybookslist.data.service.ApiServiceCategoriasList
+import com.dio.mybookslist.data.service.ApiServiceCategorias
 import com.dio.mybookslist.data.service.BaseAPi
 import com.dio.mybookslist.data.model.CategoriasModel
 import com.dio.mybookslist.data.model.CategoriasResponse
@@ -94,7 +94,7 @@ class CategoriasActivity : Fragment() {
     private fun setApiCall(): Call<CategoriasResponse> {
         val retrofitClient = BaseAPi
             .getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/")
-        val endPoints = retrofitClient.create(ApiServiceCategoriasList::class.java)
+        val endPoints = retrofitClient.create(ApiServiceCategorias::class.java)
         val callback = endPoints.getResponseCategoriasList(apiKey)
         return callback
     }

@@ -37,9 +37,9 @@ class BooksHolder(private val binding: ModelbookItemBinding , var onItemClickLis
         val setAutor = binding.tvAutor
         val setImage = binding.imvBookImage
 
-        setTitulo.text = book.titulo
-        setAutor.text = book.autor
-        Picasso.get().load(book.imagem).fit().into(setImage)
+        setTitulo.text = book.title_model
+        setAutor.text = book.author_model
+        Picasso.get().load(book.image_model).fit().into(setImage)
 
         itemView.setOnClickListener {
             onItemClickListener.invoke(book)

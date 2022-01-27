@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dio.mybookslist.data.model.BooksModel
-import com.dio.mybookslist.R
 import com.dio.mybookslist.databinding.BooksFragmentBinding
 import com.dio.mybookslist.presentation.AdapterListBooks
 import com.dio.mybookslist.presentation.ui.BookDetailsActivity
@@ -51,7 +48,7 @@ class BooksFragment : Fragment() {
     private fun initRecyclerView() {
 
         val adapter = AdapterListBooks(mutableListOf<BooksModel>(), { book ->
-            val intent = BookDetailsActivity.getStartIntent(this, book.titulo, book.autor, book.descricao, book.editora, book.imagem, book.rank)
+            val intent = BookDetailsActivity.getStartIntent(this, book.title_model, book.author_model, book.descrition_model, book.publisher_model, book.image_model, book.rank)
             this.startActivity(intent)})
 
         binding.rvBooksList.adapter= adapter

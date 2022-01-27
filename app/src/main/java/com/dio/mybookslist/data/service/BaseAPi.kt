@@ -13,10 +13,10 @@ import retrofit2.converter.gson.GsonConverterFactory
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
-    val serviceBook: ApiServiceBooksList = getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/").create(
-        ApiServiceBooksList::class.java)
-    val serviceCategies: ApiServiceCategoriasList = getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/").create(
-        ApiServiceCategoriasList::class.java)
+    val SERVICE_BOOK: ApiServiceBooks = getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/").create(
+        ApiServiceBooks::class.java)
+    val SERVICE_CATEGIES: ApiServiceCategorias = getRetrofitInstance("https://api.nytimes.com/svc/books/v3/lists/").create(
+        ApiServiceCategorias::class.java)
     }
 
 //}
