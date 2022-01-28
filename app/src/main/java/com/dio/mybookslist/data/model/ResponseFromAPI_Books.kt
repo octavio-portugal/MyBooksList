@@ -1,6 +1,7 @@
 package com.dio.mybookslist.data.model
 
 import com.google.gson.annotations.SerializedName
+import org.koin.core.definition.indexKey
 
 data class ResponseModel(
     var status: String,
@@ -56,5 +57,17 @@ data class IsbnsResponse(
     var isbn13: String
 )
 
-//fun DetailsResponse.toModel() = BooksModel(this.title, this.author, this.description, this.book_image, this.publisher)
-fun ResponseModel.toModel() = BooksModel(this.status)
+fun ResponseModel.toModel(){
+    val arrayBooksResults = ArrayList(this.results.books)
+
+    for (i in arrayBooksResults){
+        BooksModel(
+            i.title,
+            i.author,
+            i.description,
+            i.book_image,
+            i.publisher
+        )
+    }
+}
+//fun ResponseModel.toModel() = BooksModel(this.status)

@@ -8,11 +8,13 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
-class BooksDataRepository (private val api: ApiServiceBooks) : BooksRepostitory {
+class BooksDataRepository (
+    private val api: ApiServiceBooks
+    ) : BooksRepostitory {
 
-    override suspend fun getBooks(list: String, apikey: String): List<BooksModel> {
+    override suspend fun getBooks(list: String, apikey: String) = listOf(
         withContext(IO) {
-            async { api.getResponseBooksList(list, apikey).await()}
-        }
-    }
+        api.getResponseBooksList(list, apikey).await().toModel()
+    })
 }
+

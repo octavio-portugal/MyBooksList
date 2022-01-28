@@ -18,6 +18,11 @@ import retrofit2.Response
 
 class BooksViewModel(private val repository: BooksRepostitory) : ViewModel() {
 
+    private val apiKey: String
+        get() = BuildConfig.API_KEY
+
+    private var url_categories = "hardcover-fiction"
+
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(Main + viewModelJob)
 
@@ -34,7 +39,13 @@ class BooksViewModel(private val repository: BooksRepostitory) : ViewModel() {
         viewModelScope.launch {
             _loading.value = true
             try{
-                _books.value = repository.getBooks()
+                _books.value = repository.getBooks(url_categories, apiKey)
+                _loading.value= false
+            } catch (t: Throwable){
+                _books.value = emptyList()
+                _loading.value = false
+            }finally {
+                _loading.value = false
             }
         }
     }
