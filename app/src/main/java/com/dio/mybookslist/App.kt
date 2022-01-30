@@ -1,6 +1,7 @@
 package com.dio.mybookslist
 
 import android.app.Application
+import com.dio.mybookslist.data.di.DataModule
 import com.dio.mybookslist.presentation.di.PresentacionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -15,6 +16,7 @@ class App: Application() {
         }
 
         PresentacionModule.load()
+        DataModule.load()
     }
 
 

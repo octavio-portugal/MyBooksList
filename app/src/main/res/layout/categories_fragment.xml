@@ -5,31 +5,24 @@
 
     <data>
         <variable
-            name="viewModel_Books"
-            type="com.dio.mybookslist.presentation.ui.viewmodel.BooksListViewModel" />
+            name="viewModel_categories"
+            type="com.dio.mybookslist.presentation.ui.viewmodel.CategoriesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.fragment.BooksFragment"
-        android:background="?android:attr/colorSecondary">
-
-
+        tools:context=".presentation.ui.fragment.CategoriesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_books_list"
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            android:layout_marginTop="40dp"
+            android:id="@+id/rv_categories_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rv_books_list"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

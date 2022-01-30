@@ -4,77 +4,77 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dio.mybookslist.data.model.BooksModel
+import com.dio.mybookslist.data.model.DetailsResponse
+import com.dio.mybookslist.data.model.ResponseModel
 import com.dio.mybookslist.databinding.BooksFragmentBinding
 import com.dio.mybookslist.presentation.AdapterListBooks
-import com.dio.mybookslist.presentation.ui.BookDetailsActivity
-import com.dio.mybookslist.presentation.ui.viewmodel.BooksViewModel
+import com.dio.mybookslist.presentation.ui.viewmodel.BooksListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
-//private lateinit var booksAdapter: AdapterListBooks
 
 class BooksFragment : Fragment() {
 
-
-    /**
-     * Usa o Koin para injetar a dependência do ViewModel
-     */
-//    private lateinit var viewModel: BooksViewModel
-    private val viewModel: BooksViewModel by viewModel()
+    private val viewModel: BooksListViewModel by viewModel()
     private val binding: BooksFragmentBinding
-    by lazy {
-        BooksFragmentBinding.inflate(layoutInflater)
-    }
+            by lazy {
+                BooksFragmentBinding.inflate(layoutInflater)
+            }
+    private lateinit var recyclerAdapter: AdapterListBooks
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initBinding()
         initRecyclerView()
         initViewModel()
-        return binding.root
-
     }
 
-    private fun initViewModel() {
-//         viewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
-
-    }
-
-    private fun initRecyclerView() {
-
-        val adapter = AdapterListBooks(mutableListOf<BooksModel>(), { book ->
-            val intent = BookDetailsActivity.getStartIntent(this, book.title_model, book.author_model, book.descrition_model, book.publisher_model, book.image_model, book.rank)
-            this.startActivity(intent)})
-
-        binding.rvBooksList.adapter= adapter
-        binding.rvBooksList.layoutManager = LinearLayoutManager(this.context)
-    }
-
-    /**
-     * Esse método faz a inicialização do DataBinding.
-     * O arquivo XML possui uma variável viewModel, que precisa
-     * ser vinculada ao ViewModel instanciado. Também é preciso
-     * atribuir um LifeCycleOwner para que os bindings de live data
-     * funcionem.
-     */
     private fun initBinding() {
         binding.viewModelBooks = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
+    private fun initRecyclerView() {
 
-    /**
-     * Esse companion object é código boilerplate que provavelmente
-     * não será usado.
-     */
+        recyclerAdapter = AdapterListBooks()
+//        { book ->
+//            val intent: Intent = BookDetailsActivity.getStartIntent(
+//                this@BooksFragment, book.title, book.author, book.description, book.publisher, book.book_image)
+//            if (intent != null) {
+//                startActivity(intent)
+//            } else {
+//                Log.e("error", "deu errado")
+//            }
+//        })
+
+        binding.rvBooksList.adapter = recyclerAdapter
+        binding.rvBooksList.layoutManager = LinearLayoutManager(this.context)
+    }
+
+    private fun initViewModel() {
+        viewModel
+        viewModel.getBooksListObserver().observe(viewLifecycleOwner, Observer<ResponseModel> {
+            if (it != null) {
+                val books: ResponseModel
+                recyclerAdapter.setUpdateData(it.results.books as ArrayList<DetailsResponse>)
+            } else {
+                Toast.makeText(this.context, "Error in getting data", Toast.LENGTH_SHORT).show()
+            }
+        })
+        viewModel.makeApiCall()
+    }
+
     companion object {
         fun newInstance() = BooksFragment()
     }
-
 }
 

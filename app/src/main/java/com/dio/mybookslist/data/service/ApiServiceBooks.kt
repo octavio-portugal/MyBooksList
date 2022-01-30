@@ -1,8 +1,7 @@
 package com.dio.mybookslist.data.service
 
-import com.dio.mybookslist.data.model.CategoriasResponse
+import com.dio.mybookslist.data.model.CategoriesResponse
 import com.dio.mybookslist.data.model.ResponseModel
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,17 +15,17 @@ interface ApiServiceBooks {
 //    ): Call<ResponseModel>
 
     @GET("current/{lists}.json?")
-    fun getResponseBooksList(
+    suspend fun getResponseBooksList(
         @Path("lists") list: String ,
         @Query("api-key") apikey: String,
-    ): Deferred<ResponseModel>
+    ): ResponseModel
 
 }
 
 interface ApiServiceCategorias {
     @GET ("names.json?")
-    fun getResponseCategoriasList(
+    suspend fun getResponseCategoriasList(
         @Query("api-key") apikey: String
-    ): Call<CategoriasResponse>
+    ): CategoriesResponse
 }
 
