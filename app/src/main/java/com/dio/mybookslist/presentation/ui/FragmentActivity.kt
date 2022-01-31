@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import com.dio.mybookslist.R
 import com.dio.mybookslist.databinding.FragmentActivityBinding
 import com.dio.mybookslist.presentation.ui.fragment.BooksFragment
-import com.dio.mybookslist.presentation.ui.fragment.CategoriasActivity
+import com.dio.mybookslist.presentation.ui.fragment.CategoriesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
 
 @Suppress("DEPRECATION")
 class FragmentActivity : AppCompatActivity() {
@@ -29,7 +27,7 @@ class FragmentActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_categories -> {
-                    val fragment = CategoriasActivity.newInstance()
+                    val fragment = CategoriesFragment.newInstance()
                     addFragment(fragment)
                     return@OnNavigationItemSelectedListener true
                 }

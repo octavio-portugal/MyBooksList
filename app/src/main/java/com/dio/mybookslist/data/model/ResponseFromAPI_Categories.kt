@@ -1,11 +1,11 @@
 package com.dio.mybookslist.data.model
 
-data class CategoriasResponse (
-    var status : String,
-    var results: List<CategoriasDetails>
+data class CategoriesResponse (
+//    var status : String,
+    var results: List<CategoriesDetails>
         )
 
-data class CategoriasDetails (
+data class CategoriesDetails (
     var list_name: String,
     var list_name_encoded: String
         )

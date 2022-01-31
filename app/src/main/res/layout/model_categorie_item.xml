@@ -7,7 +7,7 @@
     android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/imv_background_categorias_item"
+        android:id="@+id/imv_background_categories_item"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@drawable/shape_bcg_card_details_books"
@@ -17,17 +17,17 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-        android:id="@+id/tv_nome_categoria"
+        android:id="@+id/tv_title_categorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:hint="Categoria"
+        android:hint="Categorie"
         android:textColorHint="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_background_categorias_item"
-        app:layout_constraintTop_toTopOf="@id/imv_background_categorias_item"
-        app:layout_constraintStart_toStartOf="@id/imv_background_categorias_item"
-        app:layout_constraintEnd_toEndOf="@id/imv_background_categorias_item"/>
+        app:layout_constraintBottom_toBottomOf="@+id/imv_background_categories_item"
+        app:layout_constraintTop_toTopOf="@id/imv_background_categories_item"
+        app:layout_constraintStart_toStartOf="@id/imv_background_categories_item"
+        app:layout_constraintEnd_toEndOf="@id/imv_background_categories_item"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
