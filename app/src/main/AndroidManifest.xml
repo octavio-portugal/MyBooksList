@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyBooksList">
         <activity android:name=".presentation.ui.BookDetailsActivity"/>
-        <activity android:name=".presentation.ui.FragmentActivity"/>
-        <activity android:name=".presentation.ui.LoginActivity">
+<!--        <activity android:name=".presentation.ui.FragmentActivity"/>-->
+        <activity android:name=".presentation.ui.FragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
