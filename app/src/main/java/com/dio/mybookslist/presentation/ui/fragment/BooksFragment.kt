@@ -22,7 +22,7 @@ class BooksFragment : Fragment() {
             by lazy {
                 BooksFragmentBinding.inflate(layoutInflater)
             }
-    private lateinit var recyclerAdapter: AdapterListBooks
+//    private lateinit var recyclerAdapter: AdapterListBooks
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +45,8 @@ class BooksFragment : Fragment() {
 
     private fun initRecyclerView() {
 
-        recyclerAdapter = AdapterListBooks()
+
+         val recyclerAdapter = AdapterListBooks()
 //        { book ->
 //            val intent: Intent = BookDetailsActivity.getStartIntent(
 //                this@BooksFragment, book.title, book.author, book.description, book.publisher, book.book_image)
@@ -62,15 +63,18 @@ class BooksFragment : Fragment() {
 
     private fun initViewModel() {
         viewModel
+        viewModel.makeApiCall()
         viewModel.getBooksListObserver().observe(viewLifecycleOwner, Observer<ResponseModel> {
             if (it != null) {
-                val books: ResponseModel
+                val books : ResponseModel
+//                var books: Unit = recyclerAdapter.setUpdateData(it.results.books as ArrayList<DetailsResponse>)
                 recyclerAdapter.setUpdateData(it.results.books as ArrayList<DetailsResponse>)
+//                books.results.books = getDataFromAdapater
+//                return@Observer books
             } else {
                 Toast.makeText(this.context, "Error in getting data", Toast.LENGTH_SHORT).show()
             }
         })
-        viewModel.makeApiCall()
     }
 
     companion object {

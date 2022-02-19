@@ -6,18 +6,16 @@ import com.dio.mybookslist.presentation.di.PresentacionModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class App: Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
             androidContext(this@App)
+
+            PresentacionModule.load()
+            DataModule.load()
         }
-
-        PresentacionModule.load()
-        DataModule.load()
     }
-
-
 }

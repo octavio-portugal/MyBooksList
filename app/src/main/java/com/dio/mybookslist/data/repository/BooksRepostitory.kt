@@ -29,7 +29,7 @@ class RepositoryImpl() : BooksRepostitory {
             val retrofitBooksInstance = BaseAPi.getRetrofitInstance(books_url)
                 .create(ApiServiceBooks::class.java)
             val response = retrofitBooksInstance.getResponseBooksList(list, apiKey)
-            Log.d("RESPOSTA", response.toString())
+            Log.d("RESPOSTA Repository", response.toString())
             return response
         }finally { }
     }

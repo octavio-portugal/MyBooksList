@@ -64,7 +64,7 @@ class CategoriesFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = BooksFragment()
+        fun newInstance() = CategoriesFragment()
     }
 
 
