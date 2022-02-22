@@ -12,10 +12,10 @@ class AdapterListBooks (
 //    var onItemClickListener : ((book: DetailsResponse)-> Unit)
 ):RecyclerView.Adapter<BooksHolder>() {
 
-    var books = ArrayList<DetailsResponse>()
+    private var booksListOfAdapter = ArrayList<BooksModel>()
 
-    fun setUpdateData(books : ArrayList<DetailsResponse>){
-        this.books = books
+    fun setUpdateData(books : ArrayList<BooksModel>){
+        this.booksListOfAdapter = books
         notifyDataSetChanged()
     }
 
@@ -27,11 +27,14 @@ class AdapterListBooks (
         )
     }
     override fun getItemCount(): Int {
-        return books.size
+        return booksListOfAdapter.size
     }
 
     override fun onBindViewHolder(holder: BooksHolder, position: Int) {
-        holder.bind(books.get(position))
+        val getPosition = booksListOfAdapter.get(position)
+
+
+        holder.bind(booksListOfAdapter.get(position))
     }
 }
 
@@ -43,11 +46,11 @@ class BooksHolder(private val binding: ModelbookItemBinding,
         val setAutor = binding.tvAutor
         val setImage = binding.imvBookImage
 
-    fun bind(book : DetailsResponse){
+    fun bind(book : BooksModel){
 
-        setTitulo.text = book.title
-        setAutor.text = book.author
-        Picasso.get().load(book.book_image).fit().into(setImage)
+        setTitulo.text = book.title_model
+        setAutor.text = book.author_model
+        Picasso.get().load(book.image_model).fit().into(setImage)
 
 //        itemView.setOnClickListener {
 //            onItemClickListener.invoke(book)

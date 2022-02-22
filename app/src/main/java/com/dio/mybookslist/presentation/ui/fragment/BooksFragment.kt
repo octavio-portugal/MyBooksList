@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dio.mybookslist.data.model.BooksModel
 import com.dio.mybookslist.data.model.DetailsResponse
 import com.dio.mybookslist.data.model.ResponseModel
+import com.dio.mybookslist.data.model.returnArray
 import com.dio.mybookslist.databinding.BooksFragmentBinding
 import com.dio.mybookslist.presentation.AdapterListBooks
 import com.dio.mybookslist.presentation.ui.viewmodel.BooksListViewModel
@@ -22,7 +24,7 @@ class BooksFragment : Fragment() {
             by lazy {
                 BooksFragmentBinding.inflate(layoutInflater)
             }
-//    private lateinit var recyclerAdapter: AdapterListBooks
+    private lateinit var recyclerAdapter: AdapterListBooks
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,13 +66,10 @@ class BooksFragment : Fragment() {
     private fun initViewModel() {
         viewModel
         viewModel.makeApiCall()
-        viewModel.getBooksListObserver().observe(viewLifecycleOwner, Observer<ResponseModel> {
+        viewModel.getBooksListObserver().observe(viewLifecycleOwner, Observer<BooksModel> {
             if (it != null) {
-                val books : ResponseModel
-//                var books: Unit = recyclerAdapter.setUpdateData(it.results.books as ArrayList<DetailsResponse>)
-                recyclerAdapter.setUpdateData(it.results.books as ArrayList<DetailsResponse>)
-//                books.results.books = getDataFromAdapater
-//                return@Observer books
+                val books = ArrayList<BooksModel>()
+                recyclerAdapter.setUpdateData(it.returnArray(books))
             } else {
                 Toast.makeText(this.context, "Error in getting data", Toast.LENGTH_SHORT).show()
             }
