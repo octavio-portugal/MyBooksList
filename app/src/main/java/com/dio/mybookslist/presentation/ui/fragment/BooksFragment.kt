@@ -22,7 +22,7 @@ class BooksFragment : Fragment() {
             by lazy {
                 BooksFragmentBinding.inflate(layoutInflater)
             }
-//    private lateinit var recyclerAdapter: AdapterListBooks
+    private lateinit var recyclerAdapter: AdapterListBooks
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
